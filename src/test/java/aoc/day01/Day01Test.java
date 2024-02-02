@@ -41,6 +41,18 @@ public class Day01Test {
     }
 
     @Test
+    void testPart1MultiLine2Digits() {
+        // Given
+        List<String> input = List.of("1abc2", "2abc3a");
+
+        // When
+        String result = new Day01().part1(input);
+
+        // Then
+        assertEquals("35", result);
+    }
+
+    @Test
     public void testPart2(){
         // Given
         List<String> input = Collections.singletonList("test");

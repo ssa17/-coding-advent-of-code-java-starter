@@ -17,15 +17,19 @@ public class Day01 extends Day {
 
     @Override
     public String part1(List<String> input) {
-        String text = input.get(0);
-        StringBuilder numbers = new StringBuilder();
+        int runningTotal = 0;
 
-        for (char letter : text.toCharArray()) {
-            if(Character.isDigit(letter)) {
-                numbers.append(letter);
+        for (String word : input) {
+            StringBuilder numbers = new StringBuilder();
+            for (char letter : word.toCharArray()) {
+                if(Character.isDigit(letter)) {
+                    numbers.append(letter);
+                }
             }
+            runningTotal += Integer.parseInt(numbers.toString());
         }
-        return numbers.toString();
+
+        return String.valueOf(runningTotal);
     }
 
     @Override
