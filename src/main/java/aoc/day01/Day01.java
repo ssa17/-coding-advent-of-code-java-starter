@@ -20,13 +20,23 @@ public class Day01 extends Day {
         int runningTotal = 0;
 
         for (String word : input) {
-            StringBuilder numbers = new StringBuilder();
+            char firstDigit = '0';
+            char lastDigit = '0';
+
             for (char letter : word.toCharArray()) {
                 if(Character.isDigit(letter)) {
-                    numbers.append(letter);
+                    firstDigit =letter;
+                    break;
                 }
             }
-            runningTotal += Integer.parseInt(numbers.toString());
+            for (int i = word.length(); i > 0 ; i--) {
+                if(Character.isDigit(word.charAt(i-1))) {
+                    lastDigit = word.charAt(i-1);
+                    break;
+                }
+            }
+
+            runningTotal += Integer.parseInt(String.valueOf(firstDigit) + lastDigit);
         }
 
         return String.valueOf(runningTotal);

@@ -53,6 +53,18 @@ public class Day01Test {
     }
 
     @Test
+    void testPart1MultiLineMoreThan2Digits() {
+        // Given
+        List<String> input = List.of("1ab23c2", "2a11bc3a");
+
+        // When
+        String result = new Day01().part1(input);
+
+        // Then
+        assertEquals("35", result);
+    }
+
+    @Test
     public void testPart2(){
         // Given
         List<String> input = Collections.singletonList("test");
