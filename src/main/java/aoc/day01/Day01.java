@@ -29,6 +29,7 @@ public class Day01 extends Day {
                     break;
                 }
             }
+
             for (int i = word.length(); i > 0 ; i--) {
                 if(Character.isDigit(word.charAt(i-1))) {
                     lastDigit = word.charAt(i-1);
