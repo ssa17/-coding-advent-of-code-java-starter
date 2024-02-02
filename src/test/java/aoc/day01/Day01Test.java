@@ -16,7 +16,7 @@ public class Day01Test {
         // Given
         List<String> input = new  ArrayList<>();
         input.add("1abc2");
-        input.add("pqr3stu8vwx5");
+        input.add("pqr3stu8vwx");
         input.add("a1b2c3d4e5f");
         input.add("treb7uchet");
 
@@ -26,6 +26,7 @@ public class Day01Test {
         // Then
         assertEquals("142", result);
     }
+
 
     @Test
     public void testPart1Line1(){
