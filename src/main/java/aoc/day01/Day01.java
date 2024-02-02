@@ -20,14 +20,10 @@ public class Day01 extends Day {
         String text = input.get(0);
         StringBuilder numbers = new StringBuilder();
 
-        for (String letter : text.split("")) {
-            try{
-                Integer.parseInt(letter);
+        for (char letter : text.toCharArray()) {
+            if(Character.isDigit(letter)) {
                 numbers.append(letter);
-            } catch (NumberFormatException e) {
-
             }
-
         }
         return numbers.toString();
     }
