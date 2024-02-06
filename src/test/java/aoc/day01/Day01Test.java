@@ -102,4 +102,16 @@ public class Day01Test {
         // Then
         assertEquals("219", result);
     }
+
+    @Test
+    void testOverlappingStrings() {
+        // Given
+        List<String> input = List.of("twone9");
+
+        // When
+        String result = new Day01().convertInput(input).getFirst();
+
+        // Then
+        assertEquals("219", result);
+    }
 }
