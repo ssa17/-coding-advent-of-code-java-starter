@@ -30,4 +30,8 @@ public class Day01 extends Day {
     public String part2(List<String> input) {
         return input.isEmpty() ? "" : input.get(0);
     }
+
+    public List<String> convertInput(List<String> input) {
+        return input;
+    }
 }
