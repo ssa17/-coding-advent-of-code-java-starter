@@ -4,6 +4,7 @@ import aoc.Day;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Day01 extends Day {
 
@@ -20,24 +21,18 @@ public class Day01 extends Day {
         int runningTotal = 0;
 
         for (String word : input) {
-            char firstDigit = '0';
+            Optional<Character> firstDigit = Optional.empty();
             char lastDigit = '0';
 
             for (char letter : word.toCharArray()) {
                 if(Character.isDigit(letter)) {
-                    firstDigit =letter;
-                    break;
+                    if (firstDigit.isEmpty()) {
+                        firstDigit = Optional.of(letter);
+                    }
+                    lastDigit = letter;
                 }
             }
-
-            for (int i = word.length(); i > 0 ; i--) {
-                if(Character.isDigit(word.charAt(i-1))) {
-                    lastDigit = word.charAt(i-1);
-                    break;
-                }
-            }
-
-            runningTotal += Integer.parseInt(String.valueOf(firstDigit) + lastDigit);
+            runningTotal += Integer.parseInt(String.valueOf(firstDigit.orElseThrow()) + lastDigit);
         }
 
         return String.valueOf(runningTotal);
