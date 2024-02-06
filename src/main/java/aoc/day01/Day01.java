@@ -2,9 +2,7 @@ package aoc.day01;
 
 import aoc.Day;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class Day01 extends Day {
 
@@ -25,7 +23,6 @@ public class Day01 extends Day {
 
             runningTotal += Integer.parseInt(String.valueOf(word.charAt(0)) + word.charAt(word.length()-1));
         }
-
         return String.valueOf(runningTotal);
     }
 
@@ -33,5 +30,4 @@ public class Day01 extends Day {
     public String part2(List<String> input) {
         return input.isEmpty() ? "" : input.get(0);
     }
-
 }
