@@ -21,18 +21,9 @@ public class Day01 extends Day {
         int runningTotal = 0;
 
         for (String word : input) {
-            Optional<Character> firstDigit = Optional.empty();
-            char lastDigit = '0';
+            word = word.replaceAll("\\D", "");
 
-            for (char letter : word.toCharArray()) {
-                if(Character.isDigit(letter)) {
-                    if (firstDigit.isEmpty()) {
-                        firstDigit = Optional.of(letter);
-                    }
-                    lastDigit = letter;
-                }
-            }
-            runningTotal += Integer.parseInt(String.valueOf(firstDigit.orElseThrow()) + lastDigit);
+            runningTotal += Integer.parseInt(String.valueOf(word.charAt(0)) + word.charAt(word.length()-1));
         }
 
         return String.valueOf(runningTotal);
