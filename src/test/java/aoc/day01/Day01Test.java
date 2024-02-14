@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Day01Test {
@@ -66,7 +67,6 @@ public class Day01Test {
     }
 
     @Test
-    @Disabled
     public void testPart2(){
         // Given
         List<String> input = List.of("two1nine", "eightwothree", "abcone2threexyz", "xtwone3four", "4nineeightseven2", "zoneight234", "7pqrstsixteen");
@@ -76,6 +76,18 @@ public class Day01Test {
 
         // Then
         assertEquals("281", result);
+    }
+
+    @Test
+    public void testFirstAndLastNumbersTakePriority(){
+        // Given
+        List<String> input = List.of("eightwoeighthree");
+
+        // When
+        String result = new Day01().part2(input);
+
+        // Then
+        assertEquals("83", result);
     }
 
     @Test
@@ -97,10 +109,10 @@ public class Day01Test {
         List<String> input = List.of("two1nine");
 
         // When
-        String result = new Day01().convertInput(input).getFirst();
+        List<String> result = new Day01().convertInput(input);
 
         // Then
-        assertEquals("219", result);
+        assertThat(result).containsExactly("219");
     }
 
     @Test
@@ -109,9 +121,21 @@ public class Day01Test {
         List<String> input = List.of("twone9");
 
         // When
-        String result = new Day01().convertInput(input).getFirst();
+        List<String> result = new Day01().convertInput(input);
 
         // Then
-        assertEquals("219", result);
+        assertThat(result).containsExactly("2ne9");
+    }
+
+    @Test
+    void testConvertAllNumbers() {
+        // Given
+        List<String> input = List.of("onetwothreefourfivesixseveneightninezero");
+
+        // When
+        List<String> result = new Day01().convertInput(input);
+
+        // Then
+        assertThat(result).containsExactly("1234567890");
     }
 }

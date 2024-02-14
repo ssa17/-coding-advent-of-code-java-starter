@@ -19,6 +19,7 @@ dependencies {
     implementation("org.reflections:reflections:0.10.2")
     // Use JUnit Jupiter for testing.
     testImplementation(libs.junit.jupiter)
+    testImplementation("org.assertj:assertj-core:3.25.3")
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }

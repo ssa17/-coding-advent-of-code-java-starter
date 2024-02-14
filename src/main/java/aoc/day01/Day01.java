@@ -2,6 +2,7 @@ package aoc.day01;
 
 import aoc.Day;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Day01 extends Day {
@@ -28,10 +29,25 @@ public class Day01 extends Day {
 
     @Override
     public String part2(List<String> input) {
-        return input.isEmpty() ? "" : input.get(0);
+        return part1(convertInput(input));
     }
 
-    public List<String> convertInput(List<String> input) {
-        return input;
+    public List<String> convertInput(final List<String> input) {
+        List<String> result = new ArrayList<>();
+        input.forEach(s -> {
+            result.add(s
+                    .replaceAll("one", "1")
+                    .replaceAll("two", "2")
+                    .replaceAll("three", "3")
+                    .replaceAll("four", "4")
+                    .replaceAll("five", "5")
+                    .replaceAll("six", "6")
+                    .replaceAll("seven", "7")
+                    .replaceAll("eight", "8")
+                    .replaceAll("nine", "9")
+                    .replaceAll("zero", "0")
+            );
+        });
+        return result;
     }
 }
