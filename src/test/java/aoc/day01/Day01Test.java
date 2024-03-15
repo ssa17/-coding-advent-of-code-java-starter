@@ -1,7 +1,6 @@
 package aoc.day01;
 
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -91,7 +90,6 @@ public class Day01Test {
     }
 
     @Test
-    @Disabled
     public void testPart2SingleLine() {
         // Given
         List<String> input = List.of("two1nine");
@@ -118,13 +116,25 @@ public class Day01Test {
     @Test
     void testOverlappingStrings() {
         // Given
-        List<String> input = List.of("twone9");
+        List<String> input = List.of("twoneonetwone");
 
         // When
         List<String> result = new Day01().convertInput(input);
 
         // Then
-        assertThat(result).containsExactly("2ne9");
+        assertThat(result).containsExactly("2neonetw1");
+    }
+
+    @Test
+    void test() {
+        // Given
+        List<String> input = List.of("one");
+
+        // When
+        List<String> result = new Day01().convertInput(input);
+
+        // Then
+        assertThat(result).containsExactly("1");
     }
 
     @Test
@@ -136,6 +146,6 @@ public class Day01Test {
         List<String> result = new Day01().convertInput(input);
 
         // Then
-        assertThat(result).containsExactly("1234567890");
+        assertThat(result).containsExactly("1twothreefourfivesixseveneightnine0");
     }
 }
