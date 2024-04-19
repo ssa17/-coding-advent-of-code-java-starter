@@ -148,4 +148,28 @@ public class Day01Test {
         // Then
         assertThat(result).containsExactly("1twothreefourfivesixseveneightnine0");
     }
+
+    @Test
+    void testOverlapping() {
+        // Given
+        List<String> input = List.of("twone");
+
+        // When
+        String result = new Day01().part2(input);
+
+        // Then
+        assertThat(result).isEqualTo("21");
+    }
+
+    @Test
+    void testPartTwoWithNoWords() {
+        // Given
+        List<String> input = List.of("11");
+
+        // When
+        String result = new Day01().part2(input);
+
+        // Then
+        assertThat(result).isEqualTo("11");
+    }
 }

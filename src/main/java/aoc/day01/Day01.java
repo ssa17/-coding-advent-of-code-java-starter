@@ -12,6 +12,10 @@ public class Day01 extends Day {
         currentDay = new Day01();
     }
 
+    public static void main(String[] args) {
+        Day.main(args);
+    }
+
     private Map<String, String> numbers = Map.of(
             "one","1",
             "two", "2",
@@ -48,27 +52,34 @@ public class Day01 extends Day {
 
     public List<String> convertInput(final List<String> input) {
         List<String> result = new ArrayList<>();
-        input.forEach(s -> {
+        input.forEach(line -> {
+            String firstNumber = "";
+            String secondNumber = "";
 
-            outer: for (int i = 0; i < s.length(); i++) {
+            outer: for (int currentIndex = 0; currentIndex < line.length(); currentIndex++) {
                 for (Map.Entry<String, String> entry : numbers.entrySet()) {
-                    if (s.startsWith(entry.getKey(), i)) {
-                        s = s.replaceFirst(entry.getKey(), entry.getValue());
+                    if (line.startsWith(entry.getKey(), currentIndex)) {
+                        firstNumber = entry.getValue();
                         break outer;
                     }
                 }
             }
 
-            outer: for (int i = s.length(); i > 0; i--) {
+            outer: for (int currentIndex = line.length(); currentIndex > 0; currentIndex--) {
                 for (Map.Entry<String, String> entry : numbers.entrySet()) {
-                    if (s.startsWith(entry.getKey(), i)) {
-                        s = s.substring(0,i) + entry.getValue() + s.substring(i + entry.getKey().length());
+                    if (line.startsWith(entry.getKey(), currentIndex)) {
+                        secondNumber = entry.getValue();
                         break outer;
                     }
                 }
             }
 
-            result.add(s);
+            if (firstNumber.isEmpty() && secondNumber.isEmpty()) {
+                result.add(line);
+            } else {
+                result.add(firstNumber + secondNumber);
+            }
+
         });
         return result;
     }
