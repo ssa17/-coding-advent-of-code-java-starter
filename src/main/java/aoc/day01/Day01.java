@@ -56,6 +56,7 @@ public class Day01 extends Day {
             String firstNumber = "";
             String secondNumber = "";
 
+            // TODO: we should probably look at a nicer way to do this without using labelled loops
             outer: for (int offset = 0; offset < line.length(); offset++) {
                 if (Character.isDigit(line.charAt(offset))) {
                     firstNumber = line.substring(offset, offset + 1);
