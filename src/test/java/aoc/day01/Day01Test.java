@@ -110,7 +110,7 @@ public class Day01Test {
         List<String> result = new Day01().convertInput(input);
 
         // Then
-        assertThat(result).containsExactly("219");
+        assertThat(result).containsExactly("29");
     }
 
     @Test
@@ -122,19 +122,32 @@ public class Day01Test {
         List<String> result = new Day01().convertInput(input);
 
         // Then
-        assertThat(result).containsExactly("2neonetw1");
+        assertThat(result).containsExactly("21");
     }
 
     @Test
-    void test() {
+    void testStringOne() {
         // Given
         List<String> input = List.of("one");
 
         // When
         List<String> result = new Day01().convertInput(input);
 
+
         // Then
-        assertThat(result).containsExactly("1");
+        assertThat(result).containsExactly("11");
+    }
+
+    @Test
+    void testStringOneOnPart2() {
+        // Given
+        List<String> input = List.of("one");
+
+        // When
+        String result = new Day01().part2(input);
+
+        // Then
+        assertThat(result).isEqualTo("11");
     }
 
     @Test
@@ -146,7 +159,7 @@ public class Day01Test {
         List<String> result = new Day01().convertInput(input);
 
         // Then
-        assertThat(result).containsExactly("1twothreefourfivesixseveneightnine0");
+        assertThat(result).containsExactly("10");
     }
 
     @Test
@@ -171,5 +184,24 @@ public class Day01Test {
 
         // Then
         assertThat(result).isEqualTo("11");
+    }
+
+    @Test
+    void testDigitFirstThenString() {
+
+        List<String> result = new Day01().convertInput(List.of("1one1"));
+
+        assertThat(result).containsExactly("11");
+    }
+
+    @Test
+    public void testPart2EachString(){
+        assertEquals("29", new Day01().part2(List.of("two1nine")));
+        assertEquals("83", new Day01().part2(List.of( "eightwothree")));
+        assertEquals("13", new Day01().part2(List.of("abcone2threexyz")));
+        assertEquals("24", new Day01().part2(List.of( "xtwone3four")));
+        assertEquals("42", new Day01().part2(List.of("4nineeightseven2")));
+        assertEquals("14", new Day01().part2(List.of("zoneight234")));
+        assertEquals("76", new Day01().part2(List.of("7pqrstsixteen")));
     }
 }

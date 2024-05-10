@@ -56,20 +56,32 @@ public class Day01 extends Day {
             String firstNumber = "";
             String secondNumber = "";
 
-            outer: for (int currentIndex = 0; currentIndex < line.length(); currentIndex++) {
-                for (Map.Entry<String, String> entry : numbers.entrySet()) {
-                    if (line.startsWith(entry.getKey(), currentIndex)) {
-                        firstNumber = entry.getValue();
-                        break outer;
+            outer: for (int offset = 0; offset < line.length(); offset++) {
+                if (Character.isDigit(line.charAt(offset))) {
+                    firstNumber = line.substring(offset, offset + 1);
+                    break;
+                } else {
+                    for (Map.Entry<String, String> entry : numbers.entrySet()) {
+                        String wordNumber = entry.getKey();
+                        if (line.startsWith(wordNumber, offset)) {
+                            firstNumber = entry.getValue();
+                            break outer;
+                        }
                     }
                 }
             }
 
-            outer: for (int currentIndex = line.length(); currentIndex > 0; currentIndex--) {
-                for (Map.Entry<String, String> entry : numbers.entrySet()) {
-                    if (line.startsWith(entry.getKey(), currentIndex)) {
-                        secondNumber = entry.getValue();
-                        break outer;
+            outer: for (int offset = line.length() - 1; offset >= 0; offset--) {
+                if (Character.isDigit(line.charAt(offset))) {
+                    secondNumber = line.substring(offset, offset + 1);
+                    break;
+                } else {
+                    for (Map.Entry<String, String> entry : numbers.entrySet()) {
+                        String wordNumber = entry.getKey();
+                        if (line.startsWith(wordNumber, offset)) {
+                            secondNumber = entry.getValue();
+                            break outer;
+                        }
                     }
                 }
             }
