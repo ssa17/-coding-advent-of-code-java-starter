@@ -26,14 +26,20 @@ public class Day01 extends Day {
     }
 
     public List<Integer> sumElfCalories(List<String> input) {
-        ArrayList<Integer> calories = new ArrayList<>();
-        calories.add(0);
-        return input.stream().collect(() -> calories, (list, item) -> {
-            if (!item.isEmpty()) {
-                list.set(list.size()-1, list.getLast() + Integer.parseInt(item));
-            } else {
-                list.add(0);
-            };
-        }, List::addAll);
+
+        return input.stream().collect(
+                () -> {
+                    ArrayList<Integer> calories = new ArrayList<>();
+                    calories.add(0);
+                    return calories;
+                },
+                (list, item) -> {
+                    if (!item.isEmpty()) {
+                        list.set(list.size() - 1, list.getLast() + Integer.parseInt(item));
+                    } else {
+                        list.add(0);
+                    }
+                },
+                List::addAll);
     }
 }
