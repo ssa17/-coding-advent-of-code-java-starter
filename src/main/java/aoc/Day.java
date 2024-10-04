@@ -17,11 +17,11 @@ public abstract class Day {
 
     public abstract String part1(List<String> input);
 
-    public String part1() {
+    private String part1() {
         return this.part1(loadInput());
     }
 
-    public String part2() {
+    private String part2() {
         return this.part2(loadInput());
     }
 
