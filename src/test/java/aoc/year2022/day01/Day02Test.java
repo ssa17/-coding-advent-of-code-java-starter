@@ -50,6 +50,20 @@ public class Day02Test {
     }
 
     @Test
+    void threeDraws() {
+        List<String> input = List.of("A X", "B Y", "C Z");
+
+        assertThat(new Day02().part1(input)).isEqualTo("15");
+    }
+
+    @Test
+    void threeWins() {
+        List<String> input = List.of("C X", "A Y", "B Z");
+
+        assertThat(new Day02().part1(input)).isEqualTo("24");
+    }
+
+    @Test
     void regex() {
         String generalPattern = "[ABC] [XYZ]";
         assertThat("A Z").matches(generalPattern);
