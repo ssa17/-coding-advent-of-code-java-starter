@@ -2,11 +2,14 @@ package aoc.year2022.day01;
 
 import aoc.Day;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Day02 extends Day {
+
+    public static final String ROCK = "Rock";
 
     static {
         currentDay = new Day02();
@@ -38,14 +41,26 @@ public class Day02 extends Day {
             matcher.matches();
             String ourMove = matcher.group(2);
             String theirMove = matcher.group(1);
+//            Map<String, Set<String>> draws = Map.of("A", Set.of("X","L"), "B", "Y", "C", "Z");
+//            Map<String, String> wins = Map.of("A", "Z", "B", "X", "C", "Y");
+//
+//            if (theirMove.equals(ROCK))
+
+            ArrayList arrayList = new ArrayList();
+
+
             total += switch (ourMove) {
                 case "X" -> {
+                    int score = rock;
                     if (theirMove.equals("A")) {
-                        yield rock + draw;
+                        score += draw;
                     } else if (theirMove.equals("C")) {
-                        yield rock + win;
+                        score += win;
                     }
-                    yield rock;
+                    else {
+                        score += loss;
+                    }
+                    yield score;
                 }
                 case "Y" -> {
                     if (theirMove.equals("B")) {
@@ -65,6 +80,7 @@ public class Day02 extends Day {
                 }
                 default -> loss;
             };
+//            total += ourMove.score() + ourMove.outcomeAgainst(theirMove).score();
         }
         return String.valueOf(total);
     }
