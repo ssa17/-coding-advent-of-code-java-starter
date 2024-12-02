@@ -22,7 +22,24 @@ public class Day16 extends Day {
 
     @Override
     public String part1(List<String> input) {
-        return null;
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 1; i <= 30; i++) {
+            stringBuilder
+                    .append("== Minute ")
+                    .append(i)
+                    .append(" ==\n");
+
+            if (input.getFirst().contains("Valve")) {
+                stringBuilder
+                        .append("You open valve ")
+                        .append(input.getFirst(), 6, 8)
+                        .append(".\n");
+            } else {
+                stringBuilder.append("No valves are open.\n");
+            }
+        }
+        return stringBuilder.toString();
     }
 
     @Override
