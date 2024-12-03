@@ -6,8 +6,6 @@ import java.util.List;
 
 public class Day16 extends Day {
 
-    public static final String ROCK = "Rock";
-
     static {
         currentDay = new Day16();
     }
